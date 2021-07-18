@@ -9,6 +9,7 @@ import {
   ADD_COMMENT_SUCCES,
 } from "./Type";
 import axios from "axios";
+import SetToken from "../header/SetToken";
 
 export const getAllVoitures = () => async (dispatch) => {
   dispatch({
@@ -53,6 +54,10 @@ export const getVoitureById = (id) => async (dispatch) => {
 };
 
 export const addComment = (id, comment) => async (dispatch) => {
+  if (localStorage.token) {
+    SetToken(localStorage.token);
+  }
+
   try {
     const { data } = await axios.put(
       `http://localhost:8000/api/voiture/comment/${id}`,

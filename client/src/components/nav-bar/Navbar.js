@@ -12,32 +12,34 @@ const Navbar = () => {
   }
 
   return (
-    <nav>
-      <div>
-        <div className="navbar-brand">
-          <Link to="/">
-            <i className="fas fa-car"></i>
-          </Link>
+    <div>
+      <nav>
+        <div>
+          <div className="navbar-brand">
+            <Link to="/">
+              <i className="fas fa-car"></i>
+            </Link>
+          </div>
         </div>
-      </div>
 
-      <div className="">
-        {user !== null ? (
-          <Link
-            to="/login"
-            className="btn-nav "
-            id="login_btn"
-            onClick={() => dispatch(logOut())}
-          >
-            LogOut
-          </Link>
-        ) : (
-          <Link to="/login" className="btn-nav " id="login_btn">
-            Login
-          </Link>
-        )}
-      </div>
-    </nav>
+        <div className="">
+          {user !== null ? (
+            <Link
+              to="/login"
+              className="btn-nav "
+              id="login_btn"
+              onClick={() => dispatch(logOut())}
+            >
+              LogOut
+            </Link>
+          ) : (
+            <Link to="/login" className="btn-nav " id="login_btn">
+              Login
+            </Link>
+          )}
+        </div>
+      </nav>
+    </div>
   );
 };
 

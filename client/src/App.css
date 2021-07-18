@@ -1,6 +1,10 @@
 .App {
   text-align: center;
 }
+.h3,
+h3 {
+  font-size: 20px;
+}
 
 nav {
   background-color: #232f3e;
@@ -8,6 +12,7 @@ nav {
   display: flex;
   align-items: center;
   justify-content: space-around;
+  width: 100%;
 }
 
 a {
@@ -45,7 +50,7 @@ a {
 }
 .featured-image {
   max-height: 170px;
-  max-width: 20%;
+
   margin: 0 auto;
 }
 
@@ -222,10 +227,20 @@ a {
     justify-content: center;
     align-items: center;
   }
+
+  .product-list div {
+    flex: 0 0 300px;
+  }
+}
+
+@media (min-width: 900px) {
+  .product-list div {
+    flex: 0 0 400px;
+  }
+}
+
+@media (min-width: 1100px) {
   .product-list div {
     flex: 0 0 600px;
-  }
-  .name-price {
-    margin-left: 8rem;
   }
 }

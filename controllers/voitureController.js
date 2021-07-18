@@ -55,18 +55,8 @@ exports.addReview = async (req, res) => {
     }
     const user = await User.findById(req.user.id);
     const reviews = { comment, user: req.user.id, name: user.name };
-    const review = voiture.reviews.find(
-      (review) => review.user.toString() === req.user.id.toString()
-    );
-    if (!review) {
-      voiture.reviews.unshift(reviews);
-    } else {
-      voiture.reviews.forEach((r) => {
-        if (r.user.toString() === req.user.id.toString()) {
-          r.comment = comment;
-        }
-      });
-    }
+
+    voiture.reviews.unshift(reviews);
 
     await voiture.save();
 

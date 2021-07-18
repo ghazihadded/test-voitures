@@ -9,6 +9,7 @@ import {
   LOG_OUT,
 } from "./Type";
 import axios from "axios";
+import SetToken from "../header/SetToken";
 
 export const userLogin = (form) => async (dispatch) => {
   try {
@@ -46,6 +47,10 @@ export const userRegister = (form) => async (dispatch) => {
 
 export const getUser = () => async (dispatch) => {
   dispatch({ type: GET_USER_REQUEST });
+
+  if (localStorage.token) {
+    SetToken(localStorage.token);
+  }
 
   try {
     const { data } = await axios.get("http://localhost:8000/api/user/auth");
