@@ -15,6 +15,11 @@ a {
   color: #ffffff;
 }
 
+.btn-nav {
+  text-decoration: none;
+  color: #ffffff;
+}
+
 .btn-nav:hover {
   color: #ffffff;
   text-decoration: none;
