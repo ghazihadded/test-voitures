@@ -13,7 +13,7 @@ const auth = async (req, res, next) => {
     req.user = coded.user;
     next();
   } catch (err) {
-    rers.status(500).send([{ msg: "token not valid" }]);
+    res.status(500).send([{ msg: "token not valid" }]);
   }
 };
 
