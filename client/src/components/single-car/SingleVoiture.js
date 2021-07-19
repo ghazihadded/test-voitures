@@ -36,7 +36,7 @@ export const SingleVoiture = ({ match }) => {
           data-toggle="modal"
           data-target="#myModal"
         >
-          Open Modal
+          Add Comment
         </button>
 
         <div className="modal fade" id="myModal" role="dialog">
