@@ -8,6 +8,7 @@ import {
   GET_USER_REQUEST,
   LOG_OUT,
 } from "../actions/Type";
+import { setAPIToken } from "../axios";
 
 const initialState = {
   token: localStorage.getItem("token"),
@@ -23,6 +24,7 @@ const reducer = (state = initialState, action) => {
   switch (action.type) {
     case LOGIN_SUCCES:
       localStorage.setItem("token", payload.token);
+      setAPIToken(payload.token);
       return {
         ...state,
         isLoading: false,
@@ -33,6 +35,7 @@ const reducer = (state = initialState, action) => {
 
     case LOGIN_FAIL:
       localStorage.removeItem("token");
+      setAPIToken();
       return {
         ...state,
         isLoading: false,
@@ -42,6 +45,7 @@ const reducer = (state = initialState, action) => {
       };
     case LOG_OUT:
       localStorage.removeItem("token");
+      setAPIToken();
       return {
         ...state,
         isLoading: false,
@@ -51,6 +55,7 @@ const reducer = (state = initialState, action) => {
       };
     case REGISTER_SUCCES:
       localStorage.setItem("token", payload.token);
+      setAPIToken(payload.token);
       return {
         ...state,
         isLoading: false,

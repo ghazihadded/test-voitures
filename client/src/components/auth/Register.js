@@ -18,29 +18,24 @@ const Register = ({ history }) => {
     password: "",
   });
 
-  useEffect(
-    () => {
-      if (auth) {
-        history.push("/");
-      }
-      if (registerError.length > 0) {
-        registerError.forEach((err) => {
-          if (err.params === "name") {
-            setAlert({ ...alert, name: err.msg });
-          } else if (err.params === "email") {
-            setAlert({ ...alert, email: err.msg });
-          } else if (err.msg === "email has already exist") {
-            setAlert({ ...alert, email: err.msg, password: "" });
-          } else {
-            setAlert({ ...alert, password: err.msg });
-          }
-        });
-      }
-    },
-    [auth, registerError, alert, history],
-    history,
-    alert
-  );
+  useEffect(() => {
+    if (auth) {
+      history.push("/");
+    }
+    if (registerError.length > 0) {
+      registerError.forEach((err) => {
+        if (err.params === "name") {
+          setAlert({ ...alert, name: err.msg });
+        } else if (err.params === "email") {
+          setAlert({ ...alert, email: err.msg });
+        } else if (err.msg === "email has already exist") {
+          setAlert({ ...alert, email: err.msg, password: "" });
+        } else {
+          setAlert({ ...alert, password: err.msg });
+        }
+      });
+    }
+  }, [auth, registerError, alert, history]);
 
   const onChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });

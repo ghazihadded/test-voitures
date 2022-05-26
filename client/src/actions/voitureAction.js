@@ -8,7 +8,7 @@ import {
   ADD_COMMENT_FAIL,
   ADD_COMMENT_SUCCES,
 } from "./Type";
-import axios from "axios";
+import { instance } from "../axios";
 import SetToken from "../header/SetToken";
 
 export const getAllVoitures = () => async (dispatch) => {
@@ -17,7 +17,9 @@ export const getAllVoitures = () => async (dispatch) => {
   });
 
   try {
-    const { data } = await axios.get("http://localhost:8000/api/voiture/all");
+    const { data } = await instance.get(
+      "http://localhost:8000/api/voiture/all"
+    );
     dispatch({
       type: GET_ALL_VOITURE,
       payload: data.voitures,
@@ -37,7 +39,7 @@ export const getVoitureById = (id) => async (dispatch) => {
   });
 
   try {
-    const { data } = await axios.get(
+    const { data } = await instance.get(
       `http://localhost:8000/api/voiture/get/${id}`
     );
     dispatch({
@@ -54,12 +56,8 @@ export const getVoitureById = (id) => async (dispatch) => {
 };
 
 export const addComment = (id, comment) => async (dispatch) => {
-  if (localStorage.token) {
-    SetToken(localStorage.token);
-  }
-
   try {
-    const { data } = await axios.put(
+    const { data } = await instance.put(
       `http://localhost:8000/api/voiture/comment/${id}`,
       comment
     );

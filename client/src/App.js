@@ -10,10 +10,8 @@ import { getUser } from "./actions/userAction";
 import { SingleVoiture } from "./components/single-car/SingleVoiture";
 import PrivateRouter from "./components/PrivateRouter";
 import "./App.css";
-
-if (localStorage.token) {
-  setToken(localStorage.token);
-}
+import { setAPIToken } from "./axios";
+import { TestHistory } from "./components/TestHistory";
 
 function App() {
   const dispatch = useDispatch();
@@ -30,6 +28,8 @@ function App() {
           <Route exact path="/" component={HomePage} />
           <Route exact path="/register" component={Register} />
           <Route exact path="/login" component={Login} />
+          <Route exact path="/test" component={TestHistory} />
+
           <PrivateRouter exact path="/voiture/:id" component={SingleVoiture} />
         </Switch>
       </BrowserRouter>

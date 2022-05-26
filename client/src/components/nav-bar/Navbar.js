@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { logOut } from "../../actions/userAction";
 
 const Navbar = () => {
@@ -9,6 +9,10 @@ const Navbar = () => {
 
   if (isLoading) {
     return null;
+  }
+
+  function logout() {
+    window.location.href = "/login";
   }
 
   return (
@@ -25,10 +29,12 @@ const Navbar = () => {
         <div className="">
           {user !== null ? (
             <Link
-              to="/login"
               className="btn-nav "
               id="login_btn"
-              onClick={() => dispatch(logOut())}
+              onClick={() => {
+                dispatch(logOut());
+                logout();
+              }}
             >
               LogOut
             </Link>
